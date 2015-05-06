@@ -1,43 +1,7 @@
-New log file opened at Mon May 04 19:05:14 CDT 2015 by 6550@atlas01.cs.trinity.edu
-Taking next connection to: 35408
-New client attempting to connect on port: 58221-35408
-  Address = /131.194.71.81:35408
-This client on port 58221 has uuid 26507bf7-4212-4c1c-af4b-7c1149c6dc11 configName activator humanReadableName Activator protocolVersion 1 featureTags Vector()
-Connected Clients: activator-26507bf7-4212-4c1c-af4b-7c1149c6dc11
-Taking next connection to: 35408
-New client attempting to connect on port: 58222-35408
-  Address = /131.194.71.81:35408
-Handshake exception on socket: 58222
-sbt.impl.ipc.HandshakeException: Unable to perform handshake
-	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
-	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
-	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
-Caused by: java.io.EOFException
-	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
-	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
-	... 2 more
-Taking next connection to: 35408
-New client attempting to connect on port: 58223-35408
-  Address = /131.194.71.81:35408
-This client on port 58223 has uuid da575a48-fd4f-4a1d-a5e3-55c76ec48b9b configName activator humanReadableName Activator protocolVersion 1 featureTags Vector()
-Connected Clients: activator-26507bf7-4212-4c1c-af4b-7c1149c6dc11, activator-da575a48-fd4f-4a1d-a5e3-55c76ec48b9b
-Taking next connection to: 35408
-New client attempting to connect on port: 58225-35408
-  Address = /131.194.71.81:35408
-Handshake exception on socket: 58225
-sbt.impl.ipc.HandshakeException: Unable to perform handshake
-	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
-	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
-	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
-Caused by: java.io.EOFException
-	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
-	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
-	... 2 more
-Taking next connection to: 35408
-New client attempting to connect on port: 58226-35408
-  Address = /131.194.71.81:35408
-This client on port 58226 has uuid 832cabde-e9ce-4d5b-94d0-11926b2f0a70 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
-Connected Clients: activator-26507bf7-4212-4c1c-af4b-7c1149c6dc11, activator-da575a48-fd4f-4a1d-a5e3-55c76ec48b9b, play-fork-run-832cabde-e9ce-4d5b-94d0-11926b2f0a70
-Taking next connection to: 35408
+New log file opened at Wed May 06 15:28:36 CDT 2015 by 20068@dias11.cs.trinity.edu
+Taking next connection to: 34220
+New client attempting to connect on port: 43034-34220
+  Address = /131.194.63.21:34220
+This client on port 43034 has uuid 44d5071b-4ac4-4348-9a43-09634b3d4d45 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: play-fork-run-44d5071b-4ac4-4348-9a43-09634b3d4d45
+Taking next connection to: 34220

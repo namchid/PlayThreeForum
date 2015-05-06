@@ -1,5 +1,5 @@
-New log file opened at Mon May 04 19:05:14 CDT 2015 by 6550@atlas01.cs.trinity.edu
-jvm 6550@atlas01.cs.trinity.edu
+New log file opened at Wed May 06 15:28:36 CDT 2015 by 20068@dias11.cs.trinity.edu
+jvm 20068@dias11.cs.trinity.edu
 jvm vmName=Java HotSpot(TM) 64-Bit Server VM vmVendor=Oracle Corporation vmVersion=25.5-b02
 jvm specName=Java Virtual Machine Specification specVendor=Oracle Corporation specVersion=1.8
 jvm arguments: [-Xms256m, -Xmx1024m, -XX:MetaspaceSize=64m, -XX:MaxMetaspaceSize=256m]
@@ -27,7 +27,7 @@ sorting: ns: List(sbt.plugins.CorePlugin, sbt.plugins.IvyPlugin, sbt.plugins.Jvm
   :: sorted deduced result: List(sbt.plugins.CorePlugin, sbt.plugins.IvyPlugin, sbt.plugins.JvmPlugin, sbt.plugins.JUnitXmlReportPlugin)
 [Loading] Done in /users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/project, returning: (playthreeforum-build)
 Loading project definition from /users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/project
-Running task... Cancel: sbt.TaskCancellationStrategy$Null$@225b0f2e, check cycles: false
+Running task... Cancel: sbt.TaskCancellationStrategy$Null$@32a1605d, check cycles: false
 
 Initial source changes: 
 	removed:Set()
@@ -64,125 +64,4 @@ Reapplying settings...
 Set current project to PlayThreeForum (in build file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/)
 > iflast shell
 > server-send-ready-for-request
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/compile:discoveredMainClasses
-Evaluating tasks: compile:discoveredMainClasses
-Running task... Cancel: sbt.server.ServerTaskCancellation@424ca4f4, check cycles: false
-
-Initial source changes: 
-	removed:Set()
-	added: Set()
-	modified: Set()
-Removed products: Set()
-External API changes: API Changes: Set()
-Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
-
-Sources indirectly invalidated by:
-	product: Set()
-	binary dep: Set()
-	external source: Set()
-All initially invalidated sources: Set()
-
-Total time: 1 s, completed May 4, 2015 7:05:20 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/compile:mainClass
-Evaluating tasks: compile:mainClass
-Running task... Cancel: sbt.server.ServerTaskCancellation@58ca62b7, check cycles: false
-Total time: 0 s, completed May 4, 2015 7:05:20 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/compile:discoveredMainClasses
-Evaluating tasks: compile:discoveredMainClasses
-Running task... Cancel: sbt.server.ServerTaskCancellation@831a3, check cycles: false
-
-Initial source changes: 
-	removed:Set()
-	added: Set()
-	modified: Set()
-Removed products: Set()
-External API changes: API Changes: Set()
-Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
-
-Sources indirectly invalidated by:
-	product: Set()
-	binary dep: Set()
-	external source: Set()
-All initially invalidated sources: Set()
-
-Total time: 1 s, completed May 4, 2015 7:05:21 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/compile:discoveredMainClasses
-Evaluating tasks: compile:discoveredMainClasses
-Running task... Cancel: sbt.server.ServerTaskCancellation@4cd2553e, check cycles: false
-
-Initial source changes: 
-	removed:Set()
-	added: Set()
-	modified: Set()
-Removed products: Set()
-External API changes: API Changes: Set()
-Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
-
-Sources indirectly invalidated by:
-	product: Set()
-	binary dep: Set()
-	external source: Set()
-All initially invalidated sources: Set()
-
-Total time: 1 s, completed May 4, 2015 7:05:22 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/compile:mainClass
-Evaluating tasks: compile:mainClass
-Running task... Cancel: sbt.server.ServerTaskCancellation@519e5348, check cycles: false
-Total time: 0 s, completed May 4, 2015 7:05:22 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> backgroundRun
-Evaluating tasks: compile:backgroundRun
-Running task... Cancel: sbt.server.ServerTaskCancellation@13c29811, check cycles: false
-Total time: 0 s, completed May 4, 2015 7:05:27 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/*:playForkConfig
-Evaluating tasks: *:playForkConfig
-Running task... Cancel: sbt.server.ServerTaskCancellation@78bb1502, check cycles: false
-Total time: 1 s, completed May 4, 2015 7:05:30 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> root/playForkNotifyStart http://localhost:9000
-Evaluating tasks: *:playForkNotifyStart
-Running task... Cancel: sbt.server.ServerTaskCancellation@693e44a9, check cycles: false
-Total time: 0 s, completed May 4, 2015 7:05:31 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/}root/*:playForkReload
-Evaluating tasks: *:playForkReload
-Running task... Cancel: sbt.server.ServerTaskCancellation@6c379e09, check cycles: false
-
-Initial source changes: 
-	removed:Set()
-	added: Set()
-	modified: Set()
-Removed products: Set()
-External API changes: API Changes: Set()
-Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
-
-Sources indirectly invalidated by:
-	product: Set()
-	binary dep: Set()
-	external source: Set()
-All initially invalidated sources: Set()
-
-Copy resource mappings: 
-	(/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/conf/routes,/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/target/scala-2.11/classes/routes)
-	(/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/conf/application.conf,/users/ndo/Local/HTML-Documents/WebApps/Play/PlayThreeForum/target/scala-2.11/classes/application.conf)
-Total time: 2 s, completed May 4, 2015 7:05:35 PM
-> server-post-command-cleanup
 > server-handle-next-server-request

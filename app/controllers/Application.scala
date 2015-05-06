@@ -2,44 +2,51 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-// import scala.slick.driver.MySQLDriver.simple._
-// import java.sql.Timestamp
 
-// case class UserCaseClass(
-//   userId: Int,
-//   username: String,
-//   userPass: String,
-//   userEmail: String,
-//   userDate: Timestamp,
-//   userLevel: Int)
-  
-// class User(tag: Tag) extends Table[UserCaseClass](tag, "users") {
-//   def userId = column[Int]("user_id", O.PrimaryKey, O.AutoInc)
-//   def username = column[String]("user_name")
-//   def userPass = column[String]("user_pass")
-//   def userEmail = column[String]("user_email")
-//   def userDate = column[Timestamp]("user_date")
-//   def userLevel = column[Int]("user_level")
+import scala.slick.driver.MySQLDriver.simple._
 
-//   def * = (userId, username, userPass, userEmail, userDate, userLevel) <> ((UserCaseClass.apply _).tupled, (UserCaseClass).unapply)
-// }
+import Tables.db
+import Tables._
 
 object Application extends Controller {
+    
+  // let's try alphabetizing :)
 
   def index = Action {
+      foo()
     Ok(views.html.index("Your new application is ready."))
   }
+
+  def forum = Action {
+    Ok(views.html.forum())
+  }
   
+  def login = Action {
+    Ok(views.html.index("todo"))
+  }
+  
+
+
+  
+  
+  
+  
+  
+  
+  // example custom page
   def namchi = Action {
       Ok(views.html.namchi("Hi"))
   }
   
-//   val db = Database.forURL("jdbc:mysql://localhost/bpauls", user="bpauls", password="0742985", driver="com.mysql.jdbc.Driver")
-//   db.withSession {
-//       implicit session =>
-//         val users = TableQuery[User].list
-//         println("users:")
-//         users.foreach(println)
-//   }
-  
+  // example database
+  def foo() {
+    db.withSession {
+      implicit session =>
+        val usersList = users.list
+        println("users:")
+        usersList.foreach(println)
+        
+    }
+  }
+
 }
