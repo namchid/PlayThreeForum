@@ -13,7 +13,7 @@ object Application extends Controller {
   // let's try alphabetizing :)
 
   def index = Action {
-      foo()
+    foo()
     Ok(views.html.index("Your new application is ready."))
   }
 

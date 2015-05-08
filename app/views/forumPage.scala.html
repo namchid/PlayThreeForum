@@ -15,7 +15,9 @@
             <ul class="breadcrumb">
                 <li><a>Forum</a></li>
             </ul>
-            @hiddenBoardForm
+            <form id="toCategory" action="/category" method="post">
+                @hiddenBoardForm
+            </form>
             @boardsResult
         <canvas id="c" z-index="-2"></canvas>
         </div>
