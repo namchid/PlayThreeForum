@@ -56,9 +56,10 @@
     @defining(models.Forum.getBoardsCategories2) { bc =>
         @bc.map { case (boardName, categoryList) =>
             <h2>@boardName</h2>
-            @categoryList.map { case (title, c) =>
+            @categoryList.map { case (titleString, c) =>
                 <div>
-                    <a class="category" title=@title href="#">
+                   
+                    <a class="category" title=@titleString href="#">
                         @c.catName
                     </a>
                 </div>

@@ -4,13 +4,16 @@ import play.api._
 import play.api.mvc._
 
 import scala.slick.driver.MySQLDriver.simple._
+import play.api.data.Form
+import play.api.data.Forms.tuple
+import play.api.data.Forms.text
 
 import Tables.db
 import Tables._
 
 object Application extends Controller {
     
-  // let's try alphabetizing :)
+    var screwItSessionResults = Map[String, Any]()
 
   def index = Action {
     foo()
@@ -22,17 +25,36 @@ object Application extends Controller {
   }
   
   def login = Action {
+    Ok(views.html.loginPage()).withNewSession
+  }
+  
+  def checkLogin = Action { request =>
+    def username = request.body.asFormUrlEncoded.get("username")(0)
+    def password = request.body.asFormUrlEncoded.get("password")(0)
+    
+    if(username == "" || password == "") {
+        Redirect("/login")
+    } else {
+        val userId = models.Login.getUserId(username, password)
+        if(userId < 0) {
+            Redirect("/login")
+        }
+        else {
+            Ok("Ok").withSession(
+                "userId" -> userId.toString
+            )            
+        }
+    }
+  }
+  
+  
+  
+  def newUser = Action {
     Ok(views.html.index("todo"))
   }
   
+  
 
-
-  
-  
-  
-  
-  
-  
   // example custom page
   def namchi = Action {
       Ok(views.html.namchi("Hi"))

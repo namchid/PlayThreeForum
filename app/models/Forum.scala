@@ -28,7 +28,8 @@ object Forum {
                 val cats = categories.filter(x => x.boardId === boardId).list
                 cats.map{
                     c => 
-                        val title = c.catId + "~" + c.catName + "~" + c.catId + "~" + boardName
+                        //val title = c.catId + "~" + c.catName + "~" + c.catId + "~" + boardName
+                        val title = (c.catId.toString).concat("~").concat(c.catName.toString).concat("~").concat(c.catId.toString).concat("~").concat(boardName)
                         (title, c)
                 }
         }
