@@ -3,7 +3,7 @@
     <html lang="en">
       <head>
         <meta charset="UTF-8"/>
-        <title>PlayThreeForum Login</title>
+        <title>PlayThreeForum New User</title>
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/index-styles.css")"/>
         <link href='http://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'/>
@@ -17,15 +17,20 @@
             <p id="forum-title">ThreeForum</p>
             <div id="form-container">
             
-                <form name="loginform" action="@routes.Application.checkLogin()" method="post">
-                    <input type="text" id="username" name="username" placeholder="username" class="input-fields"/>
-                    <br/>
-                    <input type="password" id="password" name="password" placeholder="password" class="input-fields"/>
-                     <br/>
-                     <input id="submit-button" type="submit" value="login"/>
-                    <input type="hidden" id="hiddenfield" name="hiddenfield"/>
-                </form>
-    
+
+            <form name="newUserForm" action="@routes.Application.createNewUser()" method="post">
+              <input type="text" id="email" name="email" placeholder="email" class="input-fields"/>
+              <br/>
+              <input type="text" id="username" name="username" placeholder="username" class="input-fields"/>
+              <br/>
+              <input type="password" id="password1" name="password1" placeholder="password" class="input-fields"/>
+              <br/>
+              <input type="password" id="password2" name="password2" placeholder="re-enter password" class="input-fields"/>
+              <button id="submit-button" type="submit">join the dark side.</button>
+              <input type="hidden" id="hiddenfield" name="hiddenfield"/>
+            </form>
+  
+
             </div>
           </fieldset>
         </div>
@@ -36,16 +41,6 @@
             <li>
                 <button id="new-user" onclick="location.href='@routes.Application.newUser()'">New User</button>
             </li>
-          <!--<li>-->
-          <!--  <form action="/loadLoginForm" method="post">-->
-          <!--    <button id="login">Log in</button>-->
-          <!--  </form>-->
-          <!--</li>-->
-          <!--<li>-->
-          <!--  <form action="/loadNewUserForm" method="post">-->
-          <!--    <button id="new-user">New User</button>-->
-          <!--  </form>-->
-          <!--</li>-->
         </ul>
         <canvas id="c"></canvas>
       </body>

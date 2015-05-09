@@ -40,17 +40,42 @@ object Application extends Controller {
             Redirect("/login")
         }
         else {
-            Ok("Ok").withSession(
+            // Ok("Ok" + userId).withSession(
+            //     "userId" -> userId.toString
+            // )  
+            Redirect("/forum").withSession(
                 "userId" -> userId.toString
-            )            
+            )
+            //println(@session("userId"))
+        }
+    }
+  }
+  
+  def createNewUser = Action { request =>
+    def email = request.body.asFormUrlEncoded.get("email")(0)
+    def username = request.body.asFormUrlEncoded.get("username")(0)
+    def password1 = request.body.asFormUrlEncoded.get("password1")(0)
+    def password2 = request.body.asFormUrlEncoded.get("password2")(0)
+     
+     
+    if(email == "" || username == "" || password1 == "" || password2 == "" || (password1 != password2)) {
+        Redirect("/login")
+    } else {
+        if(models.Login.canCreatedNewUser(username)) {
+            val newUserId = models.Login.createNewUser(email, username, password1)
+            val okString = "New user created with userId: " + newUserId
+            println("\n" + okString)
+            Redirect("/forum")
+            //Ok(views.html.index(okString)) //the eff. why can't I do .withSession after this? todo later
+        } else {
+            Redirect("/login")
         }
     }
   }
   
   
-  
   def newUser = Action {
-    Ok(views.html.index("todo"))
+    Ok(views.html.newUser())
   }
   
   
