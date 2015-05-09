@@ -18,7 +18,6 @@ GET     /logout                     controllers.Application.logout
 
 # Login page - later move this to index
 GET     /login                      controllers.Application.login
-GET     /formErrors                 controllers.Application.formErrors
 POST    /checkLogin             	controllers.Application.checkLogin
 
 # New user page
