@@ -12,21 +12,7 @@
 }
 
 @navigation = {
-    <header>ThreeForum</header>
-    <div id='cssmenu'>
-      <ul>
-        <li class='has-sub'>
-          <a href='/profile'><span>My Profile</span></a>
-          <ul>
-            <li><a href='/logout'>Logout</a></li>
-          </ul>
-        </li>
-        <li class='active'>
-          <a href='/forum'><span class='current'>Forum</span></a>
-        </li>
-        <li class='last'><a href='/about'>About ThreeForum</a></li>
-      </ul>
-    </div>
+    @models.Navigation.forumNavigation
 }
 
 @hiddenBoardForm = {
@@ -36,21 +22,6 @@
     }
 }
 
-@boardsResult1 = {
-    @defining(models.Forum.getBoardsCategories) { bc =>
-        @bc.map { case (boardName, categoryList) =>
-            <h2>@boardName</h2>
-            @categoryList.map { c => 
-                <div>
-                    <a class="category" href="#">
-                        @c.catName
-                    </a>
-                </div>
-            
-            }
-        }
-    }
-}
 
 @boardsResult = {
     @defining(models.Forum.getBoardsCategories2) { bc =>
@@ -68,5 +39,9 @@
     }
 }
 
+@realBoardsResult = {
+    @models.Forum.getBoards
+}
 
-@forumPage(headResources, navigation, hiddenBoardForm, boardsResult) 
+
+@forumPage(headResources, navigation, hiddenBoardForm, realBoardsResult) 

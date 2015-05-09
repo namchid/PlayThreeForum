@@ -12,83 +12,86 @@ import Tables.db
 import Tables._
 
 object Application extends Controller {
-    
-    var screwItSessionResults = Map[String, Any]()
 
-  def index = Action {
-    foo()
-    Ok(views.html.index("Your new application is ready."))
+  //login functionality
+  def login = Action { implicit request =>
+    request.session.get("userId") match {
+      case None =>
+        Ok(views.html.loginPage()).withNewSession
+      case _ =>
+        Redirect("/forum")
+    }
   }
 
-  def forum = Action {
-    Ok(views.html.forum())
-  }
-  
-  def login = Action {
-    Ok(views.html.loginPage()).withNewSession
-  }
-  
-  def post = Action {
-    Ok(views.html.post())
-  }
-  
   def checkLogin = Action { request =>
     def username = request.body.asFormUrlEncoded.get("username")(0)
     def password = request.body.asFormUrlEncoded.get("password")(0)
-    
-    if(username == "" || password == "") {
-        Redirect("/login")
+
+    if (username == "" || password == "") {
+      Redirect("/formErrors")
     } else {
-        val userId = models.Login.getUserId(username, password)
-        if(userId < 0) {
-            Redirect("/login")
-        }
-        else {
-            // Ok("Ok" + userId).withSession(
-            //     "userId" -> userId.toString
-            // )  
-            Redirect("/forum").withSession(
-                "userId" -> userId.toString
-            )
-            //println(@session("userId"))
-        }
+      val userId = models.Login.checkUserLogin(username, password)
+      if (userId < 0) Redirect("/formErrors")
+      else {
+        Redirect("/forum").withSession(
+          "userId" -> userId.toString,
+          "username" -> username)
+      }
     }
   }
-  
+
   def createNewUser = Action { request =>
     def email = request.body.asFormUrlEncoded.get("email")(0)
     def username = request.body.asFormUrlEncoded.get("username")(0)
     def password1 = request.body.asFormUrlEncoded.get("password1")(0)
     def password2 = request.body.asFormUrlEncoded.get("password2")(0)
-     
-     
-    if(email == "" || username == "" || password1 == "" || password2 == "" || (password1 != password2)) {
-        Redirect("/login")
+
+    if (email == "" || username == "" || password1 == "" || password2 == "" || (password1 != password2)) {
+      Redirect("/formErrors")
     } else {
-        if(models.Login.canCreatedNewUser(username)) {
-            val newUserId = models.Login.createNewUser(email, username, password1)
-            val okString = "New user created with userId: " + newUserId
-            println("\n" + okString)
-            Redirect("/forum")
-            //Ok(views.html.index(okString)) //the eff. why can't I do .withSession after this? todo later
-        } else {
-            Redirect("/login")
-        }
+      if (models.Login.canCreatedNewUser(username)) {
+        val newUserId = models.Login.createNewUser(email, username, password1)
+        request.session + ("userId" -> newUserId.toString)
+        request.session + ("username" -> username)
+        Redirect("/forum")
+      } else {
+        Redirect("/formErrors")
+      }
     }
   }
   
-  
+  def formErrors = Action {
+    Ok(views.html.loginError())
+  }
+
+  // forum - boards
+
+  def forum = Action { request =>
+    request.session.get("userId") match {
+        case None =>
+            Redirect("/")
+        case _ =>
+            Ok(views.html.forum())   
+    }
+  }
+
+  def post = Action {
+    Ok(views.html.post())
+  }
+
   def newUser = Action {
     Ok(views.html.newUser())
   }
-  
-  
+
+  def logout = Action {
+    Ok(views.html.loginPage()).withNewSession
+  }
 
   // example custom page
   def namchi = Action {
-      Ok(views.html.namchi("Hi"))
+    Ok(views.html.namchi("Hi"))
   }
-  
+
   // example database
   def foo() {
     db.withSession {
@@ -96,7 +99,7 @@ object Application extends Controller {
         val usersList = users.list
         println("users:")
         usersList.foreach(println)
-        
+
     }
   }
 
