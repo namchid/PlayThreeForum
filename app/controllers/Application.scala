@@ -28,6 +28,10 @@ object Application extends Controller {
     Ok(views.html.loginPage()).withNewSession
   }
   
+  def post = Action {
+    Ok(views.html.post())
+  }
+  
   def checkLogin = Action { request =>
     def username = request.body.asFormUrlEncoded.get("username")(0)
     def password = request.body.asFormUrlEncoded.get("password")(0)

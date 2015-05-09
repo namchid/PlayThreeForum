@@ -15,7 +15,14 @@ GET     /forum                      controllers.Application.forum
 
 # Login page - later move this to index
 GET     /login                      controllers.Application.login
+POST    /checkLogin                 controllers.Application.checkLogin
+
+# New user page
+GET     /newUser                    controllers.Application.newUser
+POST    /createNewUser              controllers.Application.createNewUser
 
 # Test Namchi
 GET     /namchi                     controllers.Application.namchi
 
+# Post - please work
+GET     /post                       controllers.Application.post

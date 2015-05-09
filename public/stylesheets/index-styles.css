@@ -14,7 +14,6 @@ canvas {
 	background-color: rgba(0, 0, 0, 0.0);
 	position: absolute;
 	z-index: 1000;
-	//border: 1px solid green;
 	margin: auto;
 	text-align: center;
 }
@@ -22,29 +21,26 @@ canvas {
 fieldset {
 	border: 0;
 	width: 100%;
-/**	//margin-left: 25%;
-	//margin-top: 20%; */
 }
 
 #forum-title {
-        width: 99%;
+    width: 99%;
 	color: #4BD154;
 	font-family: 'Monoton', sans-serif;
-        font-size: 50px;
-        //margin-bottom: 3%;
-        text-align: center;
+    font-size: 50px;
+    text-align: center;
 	background-color: rgba(0, 0, 0, .65);
 	padding: 5px 0;
 }
 
 .input-fields {
 	width: 99%;
-        font-size: 20px;
-        margin-bottom: 3%;
-        text-align: center;
+    font-size: 20px;
+    margin-bottom: 3%;
+    text-align: center;
 	border-radius: 100px;
 	border: 1px solid white;
-	background-color: black; //todo: change color
+	background-color: black; 
 }
 
 input[type="text"] {

@@ -1,0 +1,27 @@
+@(headResources: Html, navigation: Html, hiddenBoardForm: Html, postsResult: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        @headResources
+    </head>
+    <body>
+        <div id="navBar">
+            @navigation
+        </div>
+        <div id="mainContainer">
+            <div class="subtitle">Forum Posts!</div>
+            <ul class="breadcrumb">
+                <li><a>Forum</a></li>
+            </ul>
+            @hiddenBoardForm
+            <div id="posts">
+                <table class="posts-table">
+                    @postsResult
+                </table
+            </div>
+        <canvas id="c" z-index="-2"></canvas>
+        </div>
+    </body>
+</html>
