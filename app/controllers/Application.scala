@@ -22,10 +22,6 @@ object Application extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
-  def forum = Action {
-    Ok(views.html.forum())
-  }
-  
   //login functionality
   def login = Action { implicit request =>
     request.session.get("userId") match {
