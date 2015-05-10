@@ -18,7 +18,6 @@ GET     /logout                     controllers.Application.logout
 
 # Login page - later move this to index
 GET     /login                      controllers.Application.login
-GET     /formErrors                 controllers.Application.formErrors
 POST    /checkLogin             	controllers.Application.checkLogin
 
 # New user page
@@ -29,6 +28,4 @@ POST    /createNewUser              controllers.Application.createNewUser
 GET     /namchi                     controllers.Application.namchi
 
 # Post - please work
-GET     /posts                       controllers.Application.post(topic_id:Option[String], page:Option[String], post_id:Option[String] )
-
-GET     /categories                 controllers.Application.category(cat_id:Option[String] )
+GET     /post                       controllers.Application.post

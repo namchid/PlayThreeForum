@@ -1,7 +1,34 @@
-New log file opened at Sat May 09 12:26:51 CDT 2015 by 12542@dias11.cs.trinity.edu
-Taking next connection to: 56060
-New client attempting to connect on port: 43120-56060
-  Address = /131.194.63.21:56060
-This client on port 43120 has uuid 17cbb526-a866-4c35-add9-4f255e19c906 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
-Connected Clients: play-fork-run-17cbb526-a866-4c35-add9-4f255e19c906
-Taking next connection to: 56060
+New log file opened at Sat May 09 16:29:46 CDT 2015 by 520@dias11.cs.trinity.edu
+Taking next connection to: 41609
+New client attempting to connect on port: 43065-41609
+  Address = /131.194.63.21:41609
+This client on port 43065 has uuid 5a2dfc3b-3f75-490f-8174-4889e6f3b84d configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: play-fork-run-5a2dfc3b-3f75-490f-8174-4889e6f3b84d
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 41609

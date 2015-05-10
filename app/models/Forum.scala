@@ -1,6 +1,7 @@
 package models
 
 import scala.slick.driver.MySQLDriver.simple._
+import scala.xml.Node
 
 import controllers.Tables._
 import controllers.Tables.db
@@ -15,7 +16,7 @@ object Forum {
         }
     }
     
-    def getFormattedCategories(boardId: Int): List[controllers.CategoryCaseClass] = {
+    def getFormattedCategories1(boardId: Int): List[controllers.CategoryCaseClass] = {
         db.withSession {
             implicit session =>
                 categories.filter(x => x.boardId === boardId).list
@@ -40,7 +41,7 @@ object Forum {
         db.withSession {
             implicit session =>
                 boards.list.map {
-                    board => (board.boardName, getFormattedCategories(board.boardId))
+                    board => (board.boardName, getFormattedCategories1(board.boardId))
                 }
         }
     }
@@ -53,6 +54,59 @@ object Forum {
                 }
         }
     }
+    
+    
+    ////////////
+    
+      val hiddenFormFields = generateHiddenBoardFormInputs(List("cat_name", "cat_id", "board_id", "board_name", "myPage"))
+
+      val hiddenBoardForm = {
+        <form id="toCategory" action="/category" method="post">
+          { hiddenFormFields }
+        </form>
+      }
+
+      def generateHiddenBoardFormInputs(names: List[String]): Seq[Node] = {
+        val ret = for (i <- 0 until names.length) yield {
+          if (i < names.length - 1)
+            <input id={ names(i) } type="hidden" style="display:none" value="x" name={ names(i) }/>
+          else
+            <input id={ names(i) } type="hidden" style="display:none" value="1" name={ names(i) }/>
+        }
+        ret
+      }
+      
+        def formatBoard(name: String): Node = {
+            <h2>{ name }</h2>
+        }
+        
+          def getFormattedCategories(boardId: Int, boardName: String): Seq[Node] = {
+        db.withSession {
+          implicit session =>
+            val filteredCategories = categories.filter(x => x.boardId === boardId).list
+            val ret = filteredCategories.map(c =>
+              <div>
+                <a class="category" title={ c.catId + "~" + c.catName + "~" + c.catId + "~" + boardName } href="#">{ c.catName }</a>
+              </div>).asInstanceOf[Seq[Node]]
+    
+            ret
+        }
+      }
+    
+      val getBoards: Seq[Node] = {
+    
+        db.withSession {
+          implicit session =>
+            val ret = boards.list.map(b => formatBoard(b.boardName) ++: getFormattedCategories(b.boardId, b.boardName)).asInstanceOf[Seq[Node]]
+            ret
+        }
+      }
+    
+    
+    
+    
+    ///////////
+    
     
     
     
