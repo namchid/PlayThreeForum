@@ -33,7 +33,13 @@ object Application extends Controller {
   }
 
   def post(topicid:Option[String], pageP:Option[String], postid:Option[String]) = Action { request =>
-//    Ok(views.html.post())
+    request.session.get("userId") match {
+        case None =>
+             Ok(views.html.loginPage()).withNewSession
+             
+        case _ =>
+        
+        //    Ok(views.html.post())
     def userid = request.session("userId")
 //    def userid = request.body.asFormUrlEncoded.get("user_id")(0)
     def post_id = postid.getOrElse("-1")
@@ -44,16 +50,61 @@ object Application extends Controller {
      stuff = models.Post.SetPassed(post_id, topic_id, page, userid)
     Ok(views.html.post())
     }
+  
+  
+    }
+    
+    def addPost(topic_id:Option[String], content:Option[String], pageP:Option[String], post_id:Option[String]) = Action { request =>
+    request.session.get("userId") match {
+        case None =>
+             Ok(views.html.loginPage()).withNewSession
+             
+        case _ =>
+        
+        //    Ok(views.html.post())
+    def userid = request.session("userId")
+//    def userid = request.body.asFormUrlEncoded.get("user_id")(0)
+    def postid = post_id.getOrElse("-1")
+    def topicid = topic_id.getOrElse("-1")
+    def page =  pageP.getOrElse("-1")
+    def contentpass =  content.getOrElse("-1")
+
+    //Ok(models.Post.SetPassed(post_id, topic_id, page, userid))
+     stuff = models.Post.Add( topicid, userid, contentpass, page)
+    Ok(views.html.post())
+    }
+  
+  
+    }
     
   def category( catID:Option[String] ) = Action { request =>
+  
+    request.session.get("userId") match {
+        case None =>
+             Ok(views.html.loginPage()).withNewSession
+             
+        case _ =>
+        
+            
         def userid = request.session("userId")
         def cat_id = catID.getOrElse("-1")
 
      catStuff = models.Category.GoCategories(userid, cat_id)
      Ok(views.html.category())
+    }
+    
 
   }
   
+  def categoryHack = Action { request =>
+      def catId = request.body.asFormUrlEncoded.get("cat_id")(0)
+      def userId = request.session("userId")
+      
+      println("---------------------" + catId + "--------------" + userId)
+      
+      catStuff = models.Category.GoCategories(userId, catId)
+      Ok(views.html.category())
+  }
  
   def checkLogin = Action { request =>
     def username = request.body.asFormUrlEncoded.get("username")(0)
@@ -92,6 +143,8 @@ object Application extends Controller {
     }
   }
   
+  
+  
   def formErrors = Action {
     Ok(views.html.loginError())
   }
@@ -119,15 +172,31 @@ object Application extends Controller {
     Ok(views.html.loginPage()).withNewSession
   }
   
-  def aboutPage = Action {
-    Ok(views.html.aboutPage())
+  def aboutPage = Action { request =>
+    request.session.get("userId") match {
+        case None =>
+            Redirect("/")
+        case _ =>
+    
+        Ok(views.html.aboutPage())
+        
+    }
+      
       
   }
   
   def profile = Action { request =>
+      request.session.get("userId") match {
+        case None =>
+            Redirect("/")
+        case _ =>
+    
+            
       val databaseResults = models.Profile.databaseQueries(request.session("userId").toInt)
       //(String, String, Int, String, Seq[Node])
     Ok(views.html.profile(databaseResults._1,databaseResults._2,databaseResults._3,databaseResults._4))
+        
+    }
       
   }
 

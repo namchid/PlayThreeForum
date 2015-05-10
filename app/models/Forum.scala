@@ -61,7 +61,7 @@ object Forum {
       val hiddenFormFields = generateHiddenBoardFormInputs(List("cat_name", "cat_id", "board_id", "board_name", "myPage"))
 
       val hiddenBoardForm = {
-        <form id="toCategory" action="/category" method="post">
+        <form id="toCategory" action="/category" method="get">
           { hiddenFormFields }
         </form>
       }

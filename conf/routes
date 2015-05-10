@@ -34,6 +34,10 @@ GET    /about                       controllers.Application.aboutPage
 # Profile Page
 GET     /profile                    controllers.Application.profile
 GET     /posts                       controllers.Application.post(topic_id:Option[String], page:Option[String], post_id:Option[String] )
+GET     /post                       controllers.Application.post(topic_id:Option[String], page:Option[String], post_id:Option[String] )
+POST     /AddPost                       controllers.Application.addPost(topic_id:Option[String], newtopicpost:Option[String], page:Option[String], post_id:Option[String] )
 
 GET     /categories                 controllers.Application.category(cat_id:Option[String] )
+GET     /category                controllers.Application.category(cat_id:Option[String] )
+POST    /category               controllers.Application.categoryHack
 

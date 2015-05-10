@@ -32,17 +32,21 @@ object Post {
     
   def Add(topic_id:String, user_id:String, content:String, pageP:String ) = {
      var topicID = topic_id.toInt
+     if(topicID == -1) topicID = 1
      var userID = user_id.toInt
      var page = pageP.toInt
      <div>content: {content} </div>
      
+     println("\n\n\n\\t user: "+ userID + "   content: "+ content +" topicID: "+ topicID)
    //  posts. (-99, content,"date here", topicID, userID )
     
      val timeStamp = null.asInstanceOf[java.sql.Timestamp]
      
     db.withSession{
       implicit session =>
-        posts.+= (controllers.PostCaseClass(-99, content,timeStamp, topicID, userID ))
+        posts.map(p => (p.postContent, p.topicId, p.userId)).insert(content, topicID, userID)
+        
+        
     }
   
      
@@ -64,7 +68,6 @@ object Post {
 	fuckitall += '{fuckyouramp}page={page}';
   window.location=fuckitall;
 	</script>
-  <script type="text/javascript" src="js/addPostHelper.js"></script>
 
 }  
     
@@ -179,7 +182,23 @@ object Post {
         </script>
     </head>
    <body>
-    <div id="navBar"></div>
+    <div id="navBar">
+        <header>ThreeForum</header>
+    <div id='cssmenu'>
+      <ul>
+        <li class='has-sub'>
+          <a href='/profile'><span>My Profile</span></a>
+          <ul>
+            <li><a href='/logout'>Logout</a></li>
+          </ul>
+        </li>
+        <li class='active'>
+          <a href='/forum'><span class='current'>Forum</span></a>
+        </li>
+        <li class='last'><a href='/about'>About ThreeForum</a></li>
+      </ul>
+    </div>
+    </div>
     <div id="mainContainer">
 
         <div class="subtitle"><?php echo $topic_name ?></div>
@@ -219,7 +238,7 @@ object Post {
                {echoHiddenInput("formatted_input","    ")}
                {echoHiddenInput("page_post",page.toString())}
                 
-                <textarea rows="3" type="text" name="new-post" id="new-topic-post" form="post-form" placeholder="say something"></textarea>
+                <textarea rows="3" type="text" name="new-post" id="newtopicpost" form="post-form" placeholder="say something"></textarea>
                 <button name="submit-topic" class="submit-post-button" id="post_submit_bttn" data-post_id="-1">No Takebacks, OK?</button>
             </form>
         </div>

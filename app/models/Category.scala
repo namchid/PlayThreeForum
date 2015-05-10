@@ -21,11 +21,13 @@ object Category {
     implicit val getCat2 = GetResult(r => Cat2(r.<<, r.<<, r.<<, r.<<))
   */
   
-  def GoCategories(catID:String  , user_id:String)={
+  def GoCategories(user_id:String  , catID:String)={
     
         var userID = user_id.toInt
         var cat_id = catID.toInt
     //    var cat_id = 1
+
+println("------------- your cat id:" + catID)
         
         var topicSeq = scala.xml.NodeSeq.Empty //null.asInstanceOf[Seq[scala.xml.Node]]
         var catRes:String = ""
@@ -100,7 +102,23 @@ object Category {
         <script type="text/javascript" src="assets/javascripts/inner-matrix.js"></script>
     </head>
 		<body>
-    	<div id="navBar"></div>
+    	<div id="navBar">
+    	    <header>ThreeForum</header>
+    <div id='cssmenu'>
+      <ul>
+        <li class='has-sub'>
+          <a href='/profile'><span>My Profile</span></a>
+          <ul>
+            <li><a href='/logout'>Logout</a></li>
+          </ul>
+        </li>
+        <li class='active'>
+          <a href='/forum'><span class='current'>Forum</span></a>
+        </li>
+        <li class='last'><a href='/about'>About ThreeForum</a></li>
+      </ul>
+    </div>
+    	</div>
 			<div id="mainContainer">
     		<div class="subtitle">{""+catSplit(1)+"" }</div>
     		<ul class="breadcrumb">
