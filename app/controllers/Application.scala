@@ -7,11 +7,20 @@ import scala.slick.driver.MySQLDriver.simple._
 import play.api.data.Form
 import play.api.data.Forms.tuple
 import play.api.data.Forms.text
-
+import scala.xml.Node
+import play.api.templates.Html
 import Tables.db
 import Tables._
 
 object Application extends Controller {
+    
+    var screwItSessionResults = Map[String, Any]()
+    var stuff: Seq[Node] = Nil
+    var catStuff: Seq[Node] = Nil
+  def index = Action {
+    foo()
+    Ok(views.html.index("Your new application is ready."))
+  }
 
   //login functionality
   def login = Action { implicit request =>
@@ -23,6 +32,29 @@ object Application extends Controller {
     }
   }
 
+  def post(topicid:Option[String], pageP:Option[String], postid:Option[String]) = Action { request =>
+//    Ok(views.html.post())
+    def userid = request.session("userId")
+//    def userid = request.body.asFormUrlEncoded.get("user_id")(0)
+    def post_id = postid.getOrElse("-1")
+    def topic_id = topicid.getOrElse("-1")
+    def page =  pageP.getOrElse("-1")
+
+    //Ok(models.Post.SetPassed(post_id, topic_id, page, userid))
+     stuff = models.Post.SetPassed(post_id, topic_id, page, userid)
+    Ok(views.html.post())
+    }
+    
+  def category( catID:Option[String] ) = Action { request =>
+        def userid = request.session("userId")
+        def cat_id = catID.getOrElse("-1")
+
+     catStuff = models.Category.GoCategories(userid, cat_id)
+     Ok(views.html.category())
+
+  }
+  
+ 
   def checkLogin = Action { request =>
     def username = request.body.asFormUrlEncoded.get("username")(0)
     def password = request.body.asFormUrlEncoded.get("password")(0)

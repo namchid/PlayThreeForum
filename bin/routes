@@ -29,3 +29,7 @@ GET     /namchi                     controllers.Application.namchi
 
 # Post - please work
 GET     /post                       controllers.Application.post
+
+#Profile
+
+GET     /profile                    controllers.Application.profile
