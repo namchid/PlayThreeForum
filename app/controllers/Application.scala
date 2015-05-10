@@ -86,6 +86,18 @@ object Application extends Controller {
   def logout = Action {
     Ok(views.html.loginPage()).withNewSession
   }
+  
+  def aboutPage = Action {
+    Ok(views.html.aboutPage())
+      
+  }
+  
+  def profile = Action { request =>
+      val databaseResults = models.Profile.databaseQueries(request.session("userId").toInt)
+      //(String, String, Int, String, Seq[Node])
+    Ok(views.html.profile(databaseResults._1,databaseResults._2,databaseResults._3,databaseResults._4))
+      
+  }
 
   // example custom page
   def namchi = Action {

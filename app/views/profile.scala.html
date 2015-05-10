@@ -1,0 +1,6 @@
+@(username:String, email:String, postCount:Int, lastPostDate:String)
+
+@lastTen = {
+    @models.Profile.lastTenPostGlobal
+}
+@profilePage(username, email, postCount, lastPostDate, lastTen)
