@@ -25,4 +25,6 @@ POST    /createNewUser              controllers.Application.createNewUser
 GET     /namchi                     controllers.Application.namchi
 
 # Post - please work
-GET     /post                       controllers.Application.post
+GET     /posts                       controllers.Application.post(topic_id:Option[String], page:Option[String], post_id:Option[String] )
+
+GET     /categories                 controllers.Application.category(cat_id:Option[String] )
